@@ -1,0 +1,66 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background-color: #000;
+}
+
+.box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	.glitch {
+		color: #fff;
+		font-family: 'Poppins', sans-serif;
+		font-weight: 800;
+		font-size: 100px;
+		position: relative;
+		padding: 30px;
+		&:before,
+		&:after {
+			content: 'CompanyName';
+			color: #fff;
+			position: absolute;
+			top: 0;
+			overflow: hidden;
+			padding: 30px;
+		}
+		&:before {
+			left: 5px;
+			text-shadow: -2px 0 purple;
+			animation: glitch-before 2s linear 0s infinite alternate-reverse;
+		}
+		&:after {
+			left: -5px;
+			text-shadow: -2px 0 red;
+			animation: glitch-after 2s linear 0s infinite alternate-reverse;
+		}
+	}
+}
+
+@keyframes glitch-before {
+	$steps: 35;
+	@for $i from 0 through $steps {
+		#{percentage($i * (1/ $steps))} {
+			clip: rect(random(200) + px, 850px, random(200) + px, 30px);
+		}
+	}
+}
+
+@keyframes glitch-after {
+	$steps: 35;
+	@for $i from 0 through $steps {
+		#{percentage($i * (1/ $steps))} {
+			clip: rect(random(200) + px, 850px, random(200) + px, 30px);
+		}
+	}
+}
